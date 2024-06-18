@@ -21,10 +21,23 @@ public class Player {
 
     protected void move(Direction direction) {
         double phase = direction.getPhase();
-        double x = SPEED * Math.cos(angle + phase);
-        double y = SPEED * Math.sin(angle + phase);
-        this.x += x;
-        this.y += y;
+        int dx = (int) (SPEED * Math.cos(angle + phase));
+        int dy = (int) (SPEED * Math.sin(angle + phase));
+        if (canMove(dx, dy)) {
+            x += dx;
+            y += dy;
+        }
+    }
+
+    private boolean canMove(int dx, int dy) {
+        int tempX = x + dx;
+        int tempY = y + dy;
+        boolean condition = true;
+        for (int i = -SIZE/2; i <= SIZE/2; i += SIZE)
+            condition = condition
+                    && !Map.hitWall(tempX + i , tempY + i)
+                    && !Map.hitWall(tempX + i , tempY - i);
+        return condition;
     }
 
     public void paint(Graphics g) {
