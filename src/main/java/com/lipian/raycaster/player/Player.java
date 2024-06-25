@@ -32,6 +32,6 @@ public class Player {
         int x = this.x + dx;
         int y = this.y + dy;
         int distance = DigitalDifferentialAnalyzer.calculateDistance(x, y, angle);
-        return distance >= SIZE;
+        return distance >= SIZE / 2;
     }
 }
