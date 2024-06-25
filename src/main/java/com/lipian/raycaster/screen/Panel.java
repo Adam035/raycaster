@@ -59,6 +59,7 @@ public class Panel extends JPanel implements ActionListener {
             double lineHeight = Map.SIZE * screenHeight / distance;
             int lineStart = (int) ((screenHeight - lineHeight) / 2);
             int lineEnd = (int) ((screenHeight + lineHeight) / 2);
+            g.setColor(DigitalDifferentialAnalyzer.getColor());
             g.drawLine(x, lineStart, x, lineEnd);
         }
     }
