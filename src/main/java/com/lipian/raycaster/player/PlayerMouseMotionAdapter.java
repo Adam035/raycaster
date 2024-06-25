@@ -18,11 +18,11 @@ public class PlayerMouseMotionAdapter extends MouseMotionAdapter {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        if (e.getX() == width) {
+        if (e.getX() == width - 1) {
             moveMouse(1, e.getYOnScreen());
             factor++;
         } else if (e.getX() == 0) {
-            moveMouse(width - 1, e.getYOnScreen());
+            moveMouse(width - 2, e.getYOnScreen());
             factor--;
         }
         double angle = Math.PI * (e.getX() + factor * width) / 720;
